@@ -1,5 +1,6 @@
 <?php
 #Wörterliste
+$worte = ["Hochaus","Meer","Telefon"]
 
 #Startbutton
 
