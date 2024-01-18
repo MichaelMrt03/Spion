@@ -1,12 +1,13 @@
 <?php
 #Anzahl an Spielern
+if(!isset($_POST["spieleranzahl"])){
 print("
     <form action='spion.php' method='POST'>
         <input type='number' placeholder='Spieleranzahl hier eingeben...' name='spieleranzahl' ><br><br>
         <button type='submit'>OK</button>
     </form>
 ");
-
+}
 
 
 #Ansatz für variable Anzahl an Spielern
