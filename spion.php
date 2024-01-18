@@ -1,7 +1,10 @@
 <?php
+#Variablen
+$anzahlSpieler=0;
+
 #Anzahl an Spielern
-if(!isset($_POST["spieleranzahl"])){
-print("
+if (!isset($_POST["spieleranzahl"])) {
+    print("
     <form action='spion.php' method='POST'>
         <input type='number' placeholder='Spieleranzahl hier eingeben...' name='spieleranzahl' ><br><br>
         <button type='submit'>OK</button>
@@ -11,21 +14,29 @@ print("
 
 
 #Ansatz für variable Anzahl an Spielern
-if(isset($_POST["spieleranzahl"])){
+if (isset($_POST["spieleranzahl"])) {
     print("<form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
-    for($i=0;$i<$anzahlSpieler;$i++){
-        $spieler_nr=$i+1;
-        $placeholder="Name für Spieler ".$spieler_nr." eingeben...";
-        print("<input type='text' placeholder=$placeholder name='$i\' ><br><br>");
+    for ($i = 0; $i < $anzahlSpieler; $i++) {
+        $spieler_nr = $i + 1;
+        $placeholder = "Name für Spieler " . $spieler_nr . " eingeben...";
+        print("<input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
     }
-
     print("
             <button type='submit'>OK</button>
         </form>"
     );
+
+    #Wenn die Spielernamen & Spieleranzahl gesetzt wurden Werden die Spieler ausgegeben
+    for ($i = 0; $i < $anzahlSpieler; $i++) {
+        if (isset($_POST["spielername$i"])) {
+            print($_POST["spielername$i"] . "<br>");
+            print($_POST);
+        }else{print("not set");}
+    }
 }
 
+print($anzahlSpieler);
 
 #Eingabe der Namen
 // print("
@@ -43,5 +54,3 @@ if(isset($_POST["spieleranzahl"])){
 #Ausgabe der Wörter/Spion 
 
 #Timer
-
-?>
