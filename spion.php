@@ -14,8 +14,8 @@ if(isset($_POST["spieleranzahl"])){
     print("<form action='spielstart.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
     for($i=0;$i<$anzahlSpieler;$i++){
-        $j=$i+1;
-        $placeholder="Name für Spieler ".$j." eingeben...";
+        $spieler_nr=$i+1;
+        $placeholder="Name für Spieler ".$spieler_nr." eingeben...";
         print("<input type='text' placeholder=$placeholder name='$i\' ><br><br>");
     }
 
