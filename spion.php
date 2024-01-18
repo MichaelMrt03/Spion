@@ -12,7 +12,7 @@ print("
 
 #Ansatz für variable Anzahl an Spielern
 if(isset($_POST["spieleranzahl"])){
-    print("<form action='spielstart.php' method='POST'>");
+    print("<form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
     for($i=0;$i<$anzahlSpieler;$i++){
         $spieler_nr=$i+1;
