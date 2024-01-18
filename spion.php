@@ -1,8 +1,6 @@
 <?php
-#Variablen
-$anzahlSpieler=0;
-
 #Anzahl an Spielern
+#Erstes Formular
 if (!isset($_POST["spieleranzahl"])) {
     print("
     <form action='spion.php' method='POST'>
@@ -14,6 +12,7 @@ if (!isset($_POST["spieleranzahl"])) {
 
 
 #Ansatz für variable Anzahl an Spielern
+#Zweites Formular
 if (isset($_POST["spieleranzahl"])) {
     print("<form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
