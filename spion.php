@@ -31,7 +31,7 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
     print(" <input type='hidden' name='spieleranzahl' value='$anzahlSpieler'>");
 
     print("
-            <button type='submit'>OK</button>
+            <input type='submit' value='Senden'></input>
         </form>"
     );
 }
