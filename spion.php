@@ -15,9 +15,11 @@ print("<div>");
 if (!isset($_POST["spieleranzahl"])) {
     print("
     <form action='spion.php' method='POST'>
+        <label for='number'>Spieleranzahl:</label>
         <input type='number' placeholder='Spieleranzahl hier eingeben...' name='spieleranzahl' ><br><br>
-        <button type='submit'>OK</button>
+        <div><input type='submit' value='Senden'></input></div>
     </form>
+  </div>
 ");
 }
 
@@ -25,24 +27,31 @@ if (!isset($_POST["spieleranzahl"])) {
 #Ansatz für variable Anzahl an Spielern
 #Zweites Formular
 if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
-    print("<form action='spion.php' method='POST'>");
+    print("
+    <div>
+    <form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
     for ($i = 0; $i < $anzahlSpieler; $i++) {
         $spieler_nr = $i + 1;
         $placeholder = "Name für Spieler " . $spieler_nr . " eingeben...";
-        print("<input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
+        print("
+        <label for='spielername'>Spielername:</label>
+        <input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
     }
     #Spieleranzahl für Formular2 sichern
     print(" <input type='hidden' name='spieleranzahl' value='$anzahlSpieler'>");
 
     print("
-            <button type='submit'>OK</button>
-        </form>"
+            <div><input type='submit' value='Senden'></input></div>
+        </form>
+     </div>"
+    
     );
 }
 
 #Formular3
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
+    print("<div>");
     #Auswahl wer Spion wird
     $spion = random_int(0, $_POST["spieleranzahl"]-1);
     #Auswahl des Wortes
@@ -55,6 +64,7 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
             print("<button onClick='nichtSpion($wort)'>" . $_POST['spielername' . $i] .  "</button>");
         }
     }
+    print("</div");
 }
 print("</div>");
 
