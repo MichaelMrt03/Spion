@@ -38,6 +38,9 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
 
 #Formular3
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
+    #Auswahl wer Spion wird
+    $spion = random_int(0, $_POST["spieleranzahl"]);
+    print("Spion: " . $_POST["spielername$spion"] . "<br>");
     #Wenn die Spielernamen & Spieleranzahl gesetzt wurden, werden die Spieler ausgegeben
     for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
         if (isset($_POST["spielername$i"])) {
