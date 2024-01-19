@@ -1,4 +1,8 @@
 <?php
+
+#CSS einbinden
+print("<link rel='stylesheet' type='text/css' href='style.css'>");
+
 #Anzahl an Spielern
 #Erstes Formular
 if (!isset($_POST["spieleranzahl"])) {
