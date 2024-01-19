@@ -10,8 +10,9 @@ print("<div>");
 if (!isset($_POST["spieleranzahl"])) {
     print("
     <form action='spion.php' method='POST'>
+        <label for='number'>Spieleranzahl:</label>
         <input type='number' placeholder='Spieleranzahl hier eingeben...' name='spieleranzahl' ><br><br>
-        <button type='submit'>OK</button>
+        <input type='submit' value='Senden'></input>
     </form>
 ");
 }
@@ -25,7 +26,9 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
     for ($i = 0; $i < $anzahlSpieler; $i++) {
         $spieler_nr = $i + 1;
         $placeholder = "Name für Spieler " . $spieler_nr . " eingeben...";
-        print("<input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
+        print("
+        <label for='spielername'>Spielername:</label>
+        <input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
     }
     #Spieleranzahl für Formular2 sichern
     print(" <input type='hidden' name='spieleranzahl' value='$anzahlSpieler'>");
