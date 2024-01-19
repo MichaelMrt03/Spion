@@ -3,6 +3,10 @@
 #CSS einbinden
 print("<link rel='stylesheet' type='text/css' href='style.css'>");
 
+#JavaScript einbinden
+print("<script src='script.js' async></script>");
+
+
 print("<h1> Spion </h1>");
 print("<div>");
 #Anzahl an Spielern
@@ -40,18 +44,16 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     #Auswahl wer Spion wird
     $spion = random_int(0, $_POST["spieleranzahl"]);
-    print("Spion: " . $_POST["spielername$spion"] . "<br>");
     #Wenn die Spielernamen & Spieleranzahl gesetzt wurden, werden die Spieler ausgegeben
     for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
-        if (isset($_POST["spielername$i"])) {
-            print($_POST["spielername$i"] . "<br>");
-        } else {
-            print("not set");
+        if($i == $spion){
+            print("<button onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
+        } else if ($i != $spion) {
+            print("<button onClick='nichtSpion()'>" . $_POST['spielername' . $i] .  "</button>");
         }
     }
 }
 print("</div>");
-#Auswahl wer Spion wird
 
 #Ausgabe der Wörter/Spion 
 
