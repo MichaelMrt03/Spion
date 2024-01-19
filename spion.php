@@ -1,4 +1,10 @@
 <?php
+
+#CSS einbinden
+print("<link rel='stylesheet' type='text/css' href='style.css'>");
+
+print("<h1> Spion </h1>");
+print("<div>");
 #Anzahl an Spielern
 #Erstes Formular
 if (!isset($_POST["spieleranzahl"])) {
@@ -41,7 +47,7 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
         }
     }
 }
-
+print("</div>");
 #Auswahl wer Spion wird
 
 #Ausgabe der Wörter/Spion 
