@@ -16,3 +16,37 @@ h1 {
     justify-content: center;
 }
 
+/* Stil für den allgemeinen Input */
+input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+/* Hervorhebung bei Hover */
+input:hover {
+    border-color: #333;
+}
+
+/* Hervorhebung bei Fokus */
+input:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 5px rgba(0, 102, 204, 0.8);
+}
+
+/* Stil für einen Submit-Button */
+input[type="submit"] {
+    background-color: #0066cc;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* Hervorhebung bei Hover für Submit-Button */
+input[type="submit"]:hover {
+    background-color: #0056aa;
+}
+
