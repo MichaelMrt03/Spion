@@ -50,3 +50,39 @@ input[type="submit"]:hover {
     background-color: #0056aa;
 }
 
+/* Basis-Styling für Buttons */
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 25px;
+  }
+  
+  /* Standard-Button-Styling */
+  button.standard {
+    background-color: #0665a4;
+    color: #fff;
+  }
+  
+  /* Hover-Effekt für alle Buttons */
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Hover-Effekt für Standard-Buttons */
+  button.standard:hover {
+    background-color: #2298e7;
+  }
+  
+  /* Aktiver Zustand für alle Buttons */
+  button:active {
+    transform: translateY(2px);
+  }
+  
+  /* Aktiver Zustand für Standard-Buttons */
+  button.standard:active {
+    background-color: #216a94;
+  }
+  
