@@ -1,7 +1,12 @@
 <?php
-
+#(Test-)Array an Wörtern
+$wörter = ['"Universität"', '"Parlament"', '"Schule"', '"Schiff"'];
 #CSS einbinden
 print("<link rel='stylesheet' type='text/css' href='style.css'>");
+
+#JavaScript einbinden
+print("<script src='script.js' async></script>");
+
 
 print("<h1> Spion </h1>");
 print("<div>");
@@ -47,19 +52,24 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
 #Formular3
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     print("<div>");
-    #Wenn die Spielernamen & Spieleranzahl gesetzt wurden, werden die Spieler ausgegeben
+    #Auswahl wer Spion wird
+    $spion = random_int(0, $_POST["spieleranzahl"]-1);
+    #Auswahl des Wortes
+    $wort = wortauswahl($wörter);
+    #Ausgabe der Wörter/Spion 
     for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
-        if (isset($_POST["spielername$i"])) {
-            print($_POST["spielername$i"] . "<br>");
-        } else {
-            print("not set");
+        if($i == $spion){
+            print("<button onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
+        } else if ($i != $spion) {
+            print("<button onClick='nichtSpion($wort)'>" . $_POST['spielername' . $i] .  "</button>");
         }
     }
     print("</div");
 }
+print("</div>");
 
-#Auswahl wer Spion wird
-
-#Ausgabe der Wörter/Spion 
-
+#Funktion für die Auswahl eines Wortes
+function  wortauswahl(array $wörter){
+    return $wörter[random_int(0,count($wörter)-1)];
+}
 #Timer
