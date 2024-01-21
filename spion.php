@@ -59,9 +59,9 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     #Ausgabe der Wörter/Spion 
     for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
         if($i == $spion){
-            print("<button onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
+            print("<button class ='standard' onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
         } else if ($i != $spion) {
-            print("<button onClick='nichtSpion($wort)'>" . $_POST['spielername' . $i] .  "</button>");
+            print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
         }
     }
     print("</div");
