@@ -64,7 +64,10 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
             print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
         }
     }
+    print("<button onClick='timer()'>Timer starten!</button>");
+    print("<input disabled placeholder='500' id='timer'>");
     print("</div");
+    #Timer
 }
 print("</div>");
 
@@ -72,4 +75,3 @@ print("</div>");
 function  wortauswahl(array $wörter){
     return $wörter[random_int(0,count($wörter)-1)];
 }
-#Timer
