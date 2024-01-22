@@ -4,26 +4,34 @@ function spion() {
 function nichtSpion(Wort) {
     alert("Du bist nicht der Spion. Das Wort ist: " + Wort);
 }
-function timeAusgabe(zeit=300) {
-    const timeOutput = document.getElementById("timer");
-    setTimeout(() => {
-        timeOutput.setAttribute("value", zeitFormatiert(gibMinutenSekunden(tempZeit)));
-    }, "1000");
-}
 function gibMinutenSekunden(sekunden){
     arr = new Array();
     //Berechnen wie viel Minuten die Sekunden enthalten
     arr.push((sekunden-(sekunden%60))/60);
     //Berechnen wie viel Sekunden übrig bleiben wenn man die Minuten abzieht
-    arr.push(sekunden-(arr[0]*60));
+    sekundenFormatiert = sekunden-(arr[0]*60);
+    //Abfrage für füllende Null, wenn Sekunden einstellig sind
+    if(sekundenFormatiert<10){
+        arr.push("0"+sekundenFormatiert);
+    }else{
+        arr.push(sekundenFormatiert);
+    }
     return arr;
 }
 function zeitFormatiert(zeit){
     return zeit[0]+":"+zeit[1];
 }
 function timer(zeit=300){
+    const timeOutput = document.getElementById("timer");
+    tempZeit = zeit;
+    //Es werden zeitversetzt die Zeiten ausgegeben
+    for(let i=0; i<=zeit; i++){
     setTimeout(() => {
-        timeAusgabe(300);
+        timeOutput.setAttribute("value", zeitFormatiert(gibMinutenSekunden(tempZeit)));
         tempZeit=tempZeit-1;
-      }, "1000");
+        if(i==zeit){
+            alert("Die Zeit ist abgelaufen!");
+        }
+      }, (1000*i)+"");
+    }
 } 

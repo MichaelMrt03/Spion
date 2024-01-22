@@ -66,7 +66,7 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     }
     #Timer
     print("<button onClick='timer()'>Timer starten!</button>");
-    print("<input disabled placeholder='500' id='timer'>");
+    print("<input disabled placeholder='5:00' id='timer'>");
     print("</div");
 }
 print("</div>");
