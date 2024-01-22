@@ -64,10 +64,10 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
             print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
         }
     }
+    #Timer
     print("<button onClick='timer()'>Timer starten!</button>");
     print("<input disabled placeholder='500' id='timer'>");
     print("</div");
-    #Timer
 }
 print("</div>");
 
