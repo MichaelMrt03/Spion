@@ -38,6 +38,8 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
         <label for='spielername'>Spielername:</label>
         <input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
     }
+    #Timer-Dauer einstellen
+    print(" <input name='dauer' placeholder='Dauer des Timers in Sekunden'>");
     #Spieleranzahl für Formular2 sichern
     print(" <input type='hidden' name='spieleranzahl' value='$anzahlSpieler'>");
 
@@ -65,8 +67,9 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
         }
     }
     #Timer
-    print("<button onClick='timer()'>Timer starten!</button>");
-    print("<input disabled placeholder='5:00' id='timer'>");
+    $dauer=$_POST["dauer"];
+    print("<button onClick='timer($dauer)'>Timer starten!</button>");
+    print("<input disabled placeholder='$dauer' id='timer'>");
     print("</div");
 }
 print("</div>");
