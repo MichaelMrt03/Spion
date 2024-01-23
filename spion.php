@@ -31,24 +31,28 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
     <div>
     <form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
-    for ($i = 0; $i < $anzahlSpieler; $i++) {
-        $spieler_nr = $i + 1;
-        $placeholder = "Name für Spieler " . $spieler_nr . " eingeben...";
-        print("
-        <label for='spielername'>Spielername:</label>
-        <input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
-    }
-    #Timer-Dauer einstellen
-    print(" <input name='dauer' type='number' placeholder='Dauer des Timers in Minuten'>");
-    #Spieleranzahl für Formular2 sichern
-    print(" <input type='hidden' name='spieleranzahl' value='$anzahlSpieler'>");
+    if ($anzahlSpieler < 2) {
+        echo "<div class='fehler' style='background-color: red; color: white;'>Bitte mindestens 2 Spieler angeben</div>";
+    } else {
+        for ($i = 0; $i < $anzahlSpieler; $i++) {
+            $spieler_nr = $i + 1;
+            $placeholder = "Name für Spieler " . $spieler_nr . " eingeben...";
+            print("
+            <label for='spielername'>Spielername:</label>
+            <input type='text' placeholder=$placeholder name='spielername$i' ><br><br>");
+        }
+        #Timer-Dauer einstellen
+        print(" <input name='dauer' type='number' placeholder='Dauer des Timers in Minuten'>");
+        #Spieleranzahl für Formular2 sichern
+        print(" <input type='hidden' name='spieleranzahl' value='$anzahlSpieler'>");
 
-    print("
+        print("
             <div><input type='submit' value='Senden'></input></div>
         </form>
      </div>"
     
     );
+    }
 }
 
 #Formular3
@@ -56,7 +60,7 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     if (empty($_POST["spielername0"])) {
         echo "<div class='fehler' style='background-color: red; color: white;'>Bitte alle Felder ausfüllen</div>";
     } else {
-        print("<div>");
+	    print("<div>");
         #Auswahl wer Spion wird
         $spion = random_int(0, $_POST["spieleranzahl"]-1);
         #Auswahl des Wortes
