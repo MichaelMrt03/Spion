@@ -53,20 +53,23 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
 
 #Formular3
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
-    print("<div>");
-    #Auswahl wer Spion wird
-    $spion = random_int(0, $_POST["spieleranzahl"]-1);
-    #Auswahl des Wortes
-    $wort = wortauswahl($wörter);
-    #Ausgabe der Wörter/Spion 
-    for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
-        if($i == $spion){
-            print("<button class ='standard' onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
-        } else if ($i != $spion) {
-            print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
-        }
+    if (empty($_POST["spielername0"])) {
+        echo "<div class='fehler' style='background-color: red; color: white;'>Bitte alle Felder ausfüllen</div>";
+    } else {
+        print("<div>");
+        #Auswahl wer Spion wird
+        $spion = random_int(0, $_POST["spieleranzahl"]-1);
+        #Auswahl des Wortes
+        $wort = wortauswahl($wörter);
+        #Ausgabe der Wörter/Spion 
+        for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
+            if($i == $spion){
+             print("<button class ='standard' onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
+            } else if ($i != $spion) {
+             print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
+         }
+      }
     }
-    
     #Timer
 
     $dauerSekunden=$_POST["dauer"]*60;
