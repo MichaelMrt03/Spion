@@ -90,3 +90,13 @@ print("</div>");
 function  wortauswahl(array $wörter){
     return $wörter[random_int(0,count($wörter)-1)];
 }
+
+#Liefert true zurück, wenn alle Namen eingegeben wurden
+function NamensEingabePruefen(){
+    for($nr=0;$nr<$_POST['spieleranzahl'];$nr++){
+        if(!isset($_POST["spielername$nr"])){
+            	return false;
+        }
+    return true;
+    }
+}
