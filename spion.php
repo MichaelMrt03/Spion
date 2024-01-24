@@ -32,7 +32,7 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
     <form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
     if ($anzahlSpieler < 2) { #Eingabeprüfung 
-        echo "<div class='fehler' style='background-color: red; color: white;'>Bitte mindestens 2 Spieler angeben</div>";
+        echo "<div class='fehler'>Bitte mindestens 2 Spieler angeben</div>";
     } else {
         for ($i = 0; $i < $anzahlSpieler; $i++) {
             $spieler_nr = $i + 1;
@@ -72,7 +72,7 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
             }
         }
     } else {
-        echo "<div class='fehler' style='background-color: red; color: white;'>Bitte alle Felder ausfüllen</div>";
+        echo "<div class='fehler'>Bitte alle Felder ausfüllen</div>";
     }
     #Timer
 
@@ -83,7 +83,6 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     print("<input disabled placeholder='" . $_POST["dauer"] . ":00' id='timer'>");
     print("</div");
 }
-print("</div>");
 
 #Funktion für die Auswahl eines Wortes
 function  wortauswahl(array $wörter)

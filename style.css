@@ -86,3 +86,10 @@ button {
     background-color: #216a94;
   }
   
+  .fehler {
+    color: red; 
+    border: 1px solid red; 
+    padding: 5px; 
+    background-color: #ffecec;
+    font-weight: bold;
+  }
