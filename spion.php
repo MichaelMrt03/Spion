@@ -31,7 +31,7 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
     <div>
     <form action='spion.php' method='POST'>");
     $anzahlSpieler = $_POST["spieleranzahl"];
-    if ($anzahlSpieler < 2) {
+    if ($anzahlSpieler < 2) { #Eingabeprüfung 
         echo "<div class='fehler' style='background-color: red; color: white;'>Bitte mindestens 2 Spieler angeben</div>";
     } else {
         for ($i = 0; $i < $anzahlSpieler; $i++) {
@@ -58,7 +58,7 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
 #Formular3
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     print("<div>");
-    if (empty($_POST["spielername0"])) {
+    if (empty($_POST["spielername0"])) { #Eingabeprüfung
         echo "<div class='fehler' style='background-color: red; color: white;'>Bitte alle Felder ausfüllen</div>";
     } else {
 	    
