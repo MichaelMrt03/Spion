@@ -50,34 +50,33 @@ if (isset($_POST["spieleranzahl"]) && !isset($_POST["spielername0"])) {
             <div><input type='submit' value='Senden'></input></div>
         </form>
      </div>"
-    
-    );
+
+        );
     }
 }
 
 #Formular3
 if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
     print("<div>");
-    if (empty($_POST["spielername0"])) { #Eingabeprüfung
-        echo "<div class='fehler' style='background-color: red; color: white;'>Bitte alle Felder ausfüllen</div>";
-    } else {
-	    
+    if (NamensEingabePruefen()) { #Eingabeprüfung
         #Auswahl wer Spion wird
-        $spion = random_int(0, $_POST["spieleranzahl"]-1);
+        $spion = random_int(0, $_POST["spieleranzahl"] - 1);
         #Auswahl des Wortes
         $wort = wortauswahl($wörter);
         #Ausgabe der Wörter/Spion 
         for ($i = 0; $i < $_POST["spieleranzahl"]; $i++) {
-            if($i == $spion){
-             print("<button class ='standard' onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
+            if ($i == $spion) {
+                print("<button class ='standard' onClick='spion()'>" . $_POST['spielername' . $i] . "</button>");
             } else if ($i != $spion) {
-             print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
-         }
-      }
+                print("<button class='standard' onClick='nichtSpion($wort)' >" . $_POST['spielername' . $i] .  "</button>");
+            }
+        }
+    } else {
+        echo "<div class='fehler' style='background-color: red; color: white;'>Bitte alle Felder ausfüllen</div>";
     }
     #Timer
 
-    $dauerSekunden=$_POST["dauer"]*60;
+    $dauerSekunden = $_POST["dauer"] * 60;
     #Dauer in Sekunden über Button an Funktion für Timer weitergegeben
     print("<button onClick='timer($dauerSekunden)'>Timer starten!</button>");
     #Ausgabe für den Timer
@@ -87,16 +86,18 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
 print("</div>");
 
 #Funktion für die Auswahl eines Wortes
-function  wortauswahl(array $wörter){
-    return $wörter[random_int(0,count($wörter)-1)];
+function  wortauswahl(array $wörter)
+{
+    return $wörter[random_int(0, count($wörter) - 1)];
 }
 
 #Liefert true zurück, wenn alle Namen eingegeben wurden
-function NamensEingabePruefen(){
-    for($nr=0;$nr<$_POST['spieleranzahl'];$nr++){
-        if(!isset($_POST["spielername$nr"])){
-            	return false;
+function NamensEingabePruefen()
+{
+    for ($nr = 0; $nr < $_POST['spieleranzahl']; $nr++) {
+        if (empty($_POST["spielername$nr"])) {
+            return false;
         }
-    return true;
     }
+    return true;
 }
