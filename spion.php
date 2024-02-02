@@ -75,13 +75,20 @@ if (isset($_POST["spieleranzahl"]) && isset($_POST["spielername0"])) {
         echo "<div class='fehler'>Bitte alle Felder ausfüllen</div>";
     }
     #Timer
-
-    $dauerSekunden = $_POST["dauer"] * 60;
-    #Dauer in Sekunden über Button an Funktion für Timer weitergegeben
-    print("<button onClick='timer($dauerSekunden)'>Timer starten!</button>");
-    #Ausgabe für den Timer
-    print("<input disabled placeholder='" . $_POST["dauer"] . ":00' id='timer'>");
-    print("</div");
+    if(intval($_POST["dauer"])>0){
+        $dauerSekunden = intval($_POST["dauer"]) * 60;
+        #Dauer in Sekunden über Button an Funktion für Timer weitergegeben
+        print("<button onClick='timer($dauerSekunden)'>Timer starten!</button>");
+        #Ausgabe für den Timer
+        print("<input disabled placeholder='" . $_POST["dauer"] . ":00' id='timer'>");
+        print("</div");
+    }else{
+        #Default-Dauer wird genutzt
+        print("<button onClick='timer()'>Timer starten!</button>");
+        #Ausgabe für den Timer
+        print("<input disabled placeholder='5:00' id='timer'>");
+        print("</div");
+    }
 }
 
 #Funktion für die Auswahl eines Wortes
